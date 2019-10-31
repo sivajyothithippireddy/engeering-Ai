@@ -1,0 +1,44 @@
+<div class="container">
+  <input [(ngModel)]="node" placeholder="search">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Created</th>
+        <th>Url</th>
+        <th>first</th>
+        <th>Second</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-toggle="modal" data-target="#modalid" *ngFor="let data of details | pipeone:node"   (click)="modalMethod(data) " [ngClass]="{'colored': data.url == selected1}">
+        <td>{{data.author}}</td>
+        <td>{{data.url}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.objectID}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal" id="modalid" >
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h5 class="modal-title" >Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" >
+           &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <pre>{{h|json}}</pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>    
+        </div>
+      </div>
+    </div>
+  </div>
+
+<router-outlet></router-outlet>
